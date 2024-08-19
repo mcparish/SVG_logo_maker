@@ -1,59 +1,15 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
-const path = require('path');
+function generateSVG(userResponses) {
+    if (userResponses.shape === 'circle') {
+        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
+  <circle cx="150" cy="100" r="80" fill="green" />
 
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${userResponses.color}">${userResponses.name}</text>
 
-class CLI {
-    constructor() {
-        this.shapes = ['square', 'triangle', 'circle'];
+</svg>`;
     }
 
-    async init() {
-        const responses = await inquirer.prompt(content);
-        const fileName = `${responses.name}.svg`;
-        const svgContent = generateSVG(responses.shape, responses.size);
-        writeFile(fileName, svgContent);
-        console.log(`Generated logo.svg file: ${fileName}`);
-    }
 }
 
-const content = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Please enter three letters'
-    },
-    {
-        type: 'input',
-        name: 'color',
-        message: 'Please enter the text color (color keyword or hexadecimal number)'
-    },
-    {
-        type: 'list',
-        name: 'shape',
-        message: 'Please choose a shape',
-        choices: ['circle', 'triangle', 'square']
-    },
-    {
-        type: 'input',
-        name: 'shapeColor',
-        message: 'What is the color of your shape?'
-    }
-];
 
-async function init() {
-    const responses = await inquirer.prompt(content);
-    const fileName = `${responses.name}.svg`;
-    const svgContent = generateSVG(responses.shape, responses.size);
-    writeFile(fileName, svgContent);
-    console.log(`Generated logo.svg file: ${fileName}`);
-}
-
-function writeFile(filename, content) {
-    return fs.writeFileSync(path.join(process.cwd(), filename), content);
-}
-
-init();
-
-module.exports = CLI;
+module.exports = generateSVG;
