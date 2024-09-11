@@ -11,7 +11,7 @@ const content = [
     },
     {
         type: 'input',
-        name: 'color',
+        name: 'textColor',
         message: 'Please enter the text color (color keyword or hexadecimal number)'
     },
     {
@@ -38,10 +38,5 @@ async function init() {
 function writeFile(filename, content) {
     return fs.writeFileSync(path.join(process.cwd(), filename), content);
 }
-
-// (async () => {
-//     const cli = new CLI();
-//     await cli.start();
-// })();
 
 init();
