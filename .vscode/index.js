@@ -1,8 +1,8 @@
-const generateSVG = require('./lib/shapes');
+const { Triangle, Circle, Square } = require('./lib/shapes');
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
-// const shapes = ['square', 'triangle', 'circle'];
+
 const content = [
     {
         type: 'input',
@@ -37,6 +37,34 @@ async function init() {
 
 function writeFile(filename, content) {
     return fs.writeFileSync(path.join(process.cwd(), filename), content);
+}
+
+// Function to generate the SVG based on user input
+function generateSVG(responses) {
+    const { shape, shapeColor, name, textColor } = responses;
+    let shapeObj;
+
+    switch (shape) {
+        case 'triangle':
+            shapeObj = new Triangle(shapeColor);
+            break;
+        case 'circle':
+            shapeObj = new Circle(shapeColor);
+            break;
+        case 'square':
+            shapeObj = new Square(shapeColor);
+            break;
+    }
+
+    // Create the SVG content
+    return `
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+        ${shapeObj.render()}
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">
+            ${name}
+        </text>
+    </svg>
+    `;
 }
 
 init();
