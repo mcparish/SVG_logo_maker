@@ -19,5 +19,5 @@ MIT License
 
 ## Walkthrough video 
 
-https://app.screencastify.com/v2/manage/videos/76l84rUyAzf5qPSxScT7
+https://drive.google.com/file/d/1T1jUAK1fYqv1SOdLQaxIVKcK8xzE4BtS/view
 
