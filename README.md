@@ -12,6 +12,7 @@ In order to use this application you will first need to open the integrated term
 
 After the application is started you will be prompted to enter three letters, then the color of the text, then the shape of the logo, and finally the color of the logo itself. Once the final prompt is entered the logo will be created.  
 
+
 ## License
 
 MIT License
